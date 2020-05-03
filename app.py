@@ -71,6 +71,7 @@ def pass_update():
     webhook.feed(request.data)
     return 'OK'
 
+bot.setWebhook()
 bot.setWebhook(URL)
 webhook = OrderedWebhook(bot, handle)
 webhook.run_as_thread()
