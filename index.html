@@ -1,0 +1,68 @@
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<style>
+.header{
+    padding : 30px;
+    color :slateblue
+}
+body{
+    background-color: lightgreen;
+}
+form{
+    text-align: center;
+    color : crimson ;
+    border: 5px;
+    font-family: 'Sofia';font-size: 22px;
+}
+input[type=text]{
+    padding: 5px;
+    border-radius: 2cm;
+    width : 50%;
+    background-color: lightblue;
+    color :dodgerblue;
+    transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+    background-color: black;
+    border: 3px solid #555;
+    color :dodgerblue;
+    font-size: large;
+    width: 80%;
+}
+input[type=text]:hover {
+    background-color: black;
+    border: 3px solid #555;
+    color :dodgerblue;
+    font-size: large;
+    width: 80%;
+}
+input[type=submit]{
+    color: hotpink;
+    width: 20%;
+    transition: width 0.4s ease-in-out;
+}
+input[type=submit]:hover{
+    width : 50%
+}
+p{
+    color: midnightblue;
+    font-size: large;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<h2>Type the name of a book to get a quote from it.</b></h1>
+</div>
+<form action="quotes" method="POST">
+<label>Book Name: </label>
+<input type="text" name="title" placeholder="Enter book name here"/>
+<br>
+<input type="submit" title="Quote!"/>
+</form>
+</body>
+<footer>
+<p align="right">Created by Sachin Ramanathan</p>
+</footer>
+</html>
