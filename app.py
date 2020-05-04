@@ -64,7 +64,7 @@ def lyric():
     try:
         quote = quotes[randint(0,len(quotes))]
         with open('quote.html') as f:
-            htmlcode = f.read().replace('!_TITLE_!',quote['book']).replace('!_QUOTE_!',quote['quote']).replace('!_AUTHOR_!',quote['author'])
+            htmlcode = f.read().replace('!_TITLE_!',quote['book']).replace('!_QUOTE_!',quote['quote']).replace('!_AUTHOR_!',quote['author']).replace('!_QUERY_!',title)
         return htmlcode
     except TypeError:
         with open('error.html') as f:
