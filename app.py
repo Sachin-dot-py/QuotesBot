@@ -61,10 +61,15 @@ def index():
 def lyric():
     title = request.form['title']
     quotes = getBookQuotes(title)
-    quote = quotes[randint(0,len(quotes))]
-    with open('quote.html') as f:
-        htmlcode = f.read().replace('!_TITLE_!',quote['book']).replace('!_QUOTE_!',quote['quote']).replace('!_AUTHOR_!',quote['author'])
-    return htmlcode
+    try:
+        quote = quotes[randint(0,len(quotes))]
+        with open('quote.html') as f:
+            htmlcode = f.read().replace('!_TITLE_!',quote['book']).replace('!_QUOTE_!',quote['quote']).replace('!_AUTHOR_!',quote['author'])
+        return htmlcode
+    except TypeError:
+        with open('error.html') as f:
+            htmlcode = f.read().replace('<!-title-!>',title)
+        return htmlcode
 
 @app.route('/webhook_path', methods=['GET', 'POST'])
 def pass_update():
