@@ -101,31 +101,30 @@ cite a:hover {
 } 
   </style>
 	<meta charset="UTF-8">
-	<title>!_TITLE_!</title>
+	<title>{{ title }}</title>
 </head>
 <body>
 	  <section class="main">  
       <div class="mb-wrap mb-style-2">  
         <blockquote>  
-          <p>!_QUOTE_!</p>
+          <p>{{ quote }}</p>
         </blockquote>
       </div><!--#mb-wrap-->
       
       <div class="mb-attribution"> 
         <p class="mb-author">  
-          !_AUTHOR_!
+          {{ author }}
         </p>
         <cite>  
-          !_TITLE_!
+          {{ title }}
         </cite>
       </div><!-- #mb-attribution-->
   </section>
   <br>
   <br>
   <form action="/quotes" method="POST">
-    <h5 align=right>Hint: <button name="title" value="!_QUERY_!">Click here</button> to get another quote for the same book</h4>
+    <h5 align=right>Hint: <button name="title" value="{{ query }}">Click here</button> to get another quote for the same book</h4>
   </form>
   <h5 align=right>Click <a href="/">here</a> to search for another book.</h4>
-  <!--<h4 align=right>Amazed? Send the creator of this page a message by clicking <a href="/message">here</a></h3>-->
 </body>
 </html>

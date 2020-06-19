@@ -1,6 +1,6 @@
 from credentials import TOKEN,URL
 from methods import getBookQuotes
-from flask import Flask, request
+from flask import Flask, request, render_template
 from telepot.loop import OrderedWebhook
 from telepot.namedtuple import InlineKeyboardMarkup,InlineKeyboardButton
 from random import randint
@@ -19,7 +19,6 @@ def handle(msg):
             if text[0] == '/':
                 if '/start' in text:
                     bot.sendMessage(chat_id,"Welcome to _Quotes Bot_!\nGet quotes from any book!📖",parse_mode='Markdown')
-                    # keyboard = InlineKeyboardButton(text='Sure!✅',callback_query='')
                 elif '/help' in text:
                     bot.sendMessage(chat_id,"Simply send the name of a book to get quotes from it")
                 else:
@@ -49,27 +48,21 @@ def handle(msg):
         else:
             bot.sendMessage(chat_id, f"No results found for _{text}_",parse_mode='Markdown')
     else:
-        bot.sendMessage('855910557',f"Sorry, I don't support {msg_type} yet.")
+        bot.sendMessage(chat_id,f"Sorry, I don't support {msg_type} yet.")
 
 @app.route('/',methods=['GET'])
 def index():
-    with open('index.html') as f:
-        htmlcode = f.read()
-    return htmlcode
+    return render_template('index.html')
 
 @app.route('/quotes',methods=['GET','POST'])
 def lyric():
     title = request.form['title']
-    quotes = getBookQuotes(title)
     try:
+        quotes = [quote for quote in getBookQuotes(title) if len(quote['quote']) <= 160]
         quote = quotes[randint(0,len(quotes))]
-        with open('quote.html') as f:
-            htmlcode = f.read().replace('!_TITLE_!',quote['book']).replace('!_QUOTE_!',quote['quote']).replace('!_AUTHOR_!',quote['author']).replace('!_QUERY_!',title)
-        return htmlcode
-    except TypeError:
-        with open('error.html') as f:
-            htmlcode = f.read().replace('<!-title-!>',title)
-        return htmlcode
+        return render_template('quote.html',title=quote['book'], quote=quote['quote'], author=quote['author'], query=title)
+    except:
+        return render_template('error.html', title=title)
 
 @app.route('/webhook_path', methods=['GET', 'POST'])
 def pass_update():
@@ -82,4 +75,4 @@ webhook = OrderedWebhook(bot, handle)
 webhook.run_as_thread()
 
 if __name__ == "__main__":
-    app.run()
+    app.run(threaded=True)
