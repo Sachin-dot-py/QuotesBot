@@ -9,7 +9,7 @@ Quotes bot is a [Telegram Bot](https:/t.me/Quotes13Bot) and a [Webpage](https://
 
 
 ## Setup
-- Clone this repo to your computer using ``` ```
+- Clone this repo to your computer using ```git clone git@github.com:Sachin-dot-py/QuotesBot.git```
 - Navigate into the directory using ```cd QuotesBot```
 - Install the requirements using ```pip3 install -r requirements.txt ```
 - Start your app using ```gunicorn app:app```
