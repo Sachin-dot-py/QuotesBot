@@ -1,11 +1,12 @@
 # Quotes Bot
 
 ## About
-Quotes bot is a [Telegram Bot](https:/t.me/Quotes13Bot) and a [Webpage](https://quotes13.herokuapp.com/) for getting popular quotes from books. It is hosted on Heroku and quotes are from GoodReads.
+Quotes bot is a [Telegram Bot](https://t.me/Quotes13Bot) and a [Webpage](https://quotes13.herokuapp.com/) for getting popular quotes from books. It is hosted on Heroku and quotes are from GoodReads. Try it out for yourself using the links.
 
 ## Screenshots:
 - [Home page](https://i.imgur.com/shNEbfq.png)
 - [Quote page](https://i.imgur.com/gTRaqbW.png)
+- [Demo Video of Bot](https://youtu.be/r6MosavV-s4)
 
 
 ## Setup
